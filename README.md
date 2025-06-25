@@ -65,7 +65,7 @@ your-project/
 ├── .roomodes              # RooRoo mode definitions
 ├── .roo/                  # Custom rules and instructions
 │   └── rules/             # Agent-specific rules
-│
+│   ...
 └── ... (your project files)
 ```
 
