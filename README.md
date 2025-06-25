@@ -44,20 +44,22 @@ RooRoo supports both **project-specific** and **global** installation approaches
 1. **Install Roo Code Extension**: Ensure the [Roo Code VS Code extension](https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline) is installed
 2. **API Keys**: Configure your preferred LLM provider API keys or CLI tools (e.g., Claude Code) in Roo Code settings
 
+#### Download rooroo
+
+Start by downloading or cloning this repository. Both local and global installation options require the same core files from the rooroo repository:
+- `.roomodes` file (can be YAML or JSON format for local install)
+- `.roo/` directory with custom rules and instructions
+
 ### Installation Options
 
 #### Option 1: Project-Specific Installation
 
 Install RooRoo for a single project. The configuration only applies to the current project.
 
-```bash
-# 1. Copy configuration files to your project root
-wget https://raw.githubusercontent.com/marv1nnnnn/rooroo/main/.roomodes
-wget -r --no-parent --reject="index.html*" https://raw.githubusercontent.com/marv1nnnnn/rooroo/main/.roo/
+Copy the following files to your project root:
+- `.roomodes` or `.roomodes.json` (RooRoo mode definitions - can be YAML or JSON format)
+- `.roo/` directory (custom rules and instructions)
 
-# 2. Reload VS Code
-# Press Ctrl+Shift+P (or Cmd+Shift+P) -> "Developer: Reload Window"
-```
 
 **File Structure:**
 ```
@@ -65,7 +67,6 @@ your-project/
 ├── .roomodes              # RooRoo mode definitions
 ├── .roo/                  # Custom rules and instructions
 │   └── rules/             # Agent-specific rules
-│   ...
 └── ... (your project files)
 ```
 
@@ -73,39 +74,32 @@ your-project/
 
 Install RooRoo globally. The same configuration applies to all projects automatically.
 
-```bash
-# 1. Create global modes directory (if it doesn't exist)
-# Windows:
-mkdir -p "%APPDATA%/Code/User/globalStorage/rooveterinaryinc.roo-cline/settings"
+Copy the `.roomodes` file to your global Roo Code settings directory as `custom_modes.yaml`:
 
-# macOS/Linux:
-mkdir -p ~/.vscode/User/globalStorage/rooveterinaryinc.roo-cline/settings
+**Windows:**
+`%APPDATA%/Code/User/globalStorage/rooveterinaryinc.roo-cline/settings/custom_modes.yaml`
 
-# 2. Download and install global configuration
-# Windows:
-curl -o "%APPDATA%/Code/User/globalStorage/rooveterinaryinc.roo-cline/settings/cline_custom_modes.json" \
-  https://raw.githubusercontent.com/marv1nnnnn/rooroo/main/.roomodes
+**macOS:**
+`~/.vscode/User/globalStorage/rooveterinaryinc.roo-cline/settings/custom_modes.yaml`
 
-# macOS/Linux:  
-curl -o ~/.vscode/User/globalStorage/rooveterinaryinc.roo-cline/settings/cline_custom_modes.json \
-  https://raw.githubusercontent.com/marv1nnnnn/rooroo/main/.roomodes
+**Linux:**
+`~/.vscode/User/globalStorage/rooveterinaryinc.roo-cline/settings/custom_modes.yaml`
 
-# 3. Restart VS Code completely
-```
+**Note**: #FIXME:wrong https://docs.roocode.com/features/custom-instructions?_highlight=rules#rules-about-rules-files ; Global installation only includes the mode definitions. The `.roo/rules/` directory contains workspace-level and mode-specific custom instructions that are project-specific and should be copied to individual projects where needed.
 
-**Note**: For global installation, rename `.roomodes` to `cline_custom_modes.json` and ensure it follows the global configuration format.
 
 ### Verify Installation
 
 After installation:
 
-1. **Restart VS Code** (full restart, not just reload)
-2. **Open Roo Code panel** (click the Roo icon in the Activity Bar)
-3. **Check available modes** - you should see RooRoo agents like:
-   - 🧭 Rooroo Navigator  
-   - 🏛️ Strategic Planner
-   - 📐 Solution Architect
-   - 🧘♂️ Coder Monk
+1. **Open Roo Code panel** (click the Roo icon in the Activity Bar)
+2. **Check available modes** - you should see RooRoo agents like:
+   - 🧭 Rooroo Navigator (Your Project Coordinator!)
+   - 🗓️ Rooroo Planner
+   - 🧑‍💻 Rooroo Developer
+   - 📊 Rooroo Analyzer
+   - ✍️ Rooroo Documenter
+   - 💡 Rooroo Idea Sparker
 
 ## 🚀 Quick Start & Core Workflow
 
