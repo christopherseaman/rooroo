@@ -33,6 +33,80 @@ Inspired by Buddhist philosophy, "如如" (rú rú) or "Thusness" reflects the i
     *   **Workspace-Relative Paths:** Simplifies file referencing.
     *   **Customizable Agent Behavior (Optional):** Utilize the `.roo/rules/` directory for workspace-wide custom instructions to tailor agent behavior, aligning with Roo Code best practices for organization and potential performance improvements.
 
+## Installation
+
+RooRoo supports both **project-specific** and **global** installation approaches.
+- **Project-Specific Installation:** applies only to one specific project
+- **Global Installation:** will apply to ALL projects where you use Roo Code
+
+### Prerequisites
+
+1. **Install Roo Code Extension**: Ensure the [Roo Code VS Code extension](https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline) is installed
+2. **API Keys**: Configure your preferred LLM provider API keys or CLI tools (e.g., Claude Code) in Roo Code settings
+
+### Installation Options
+
+#### Option 1: Project-Specific Installation
+
+Install RooRoo for a single project. The configuration only applies to the current project.
+
+```bash
+# 1. Copy configuration files to your project root
+wget https://raw.githubusercontent.com/marv1nnnnn/rooroo/main/.roomodes
+wget -r --no-parent --reject="index.html*" https://raw.githubusercontent.com/marv1nnnnn/rooroo/main/.roo/
+
+# 2. Reload VS Code
+# Press Ctrl+Shift+P (or Cmd+Shift+P) -> "Developer: Reload Window"
+```
+
+**File Structure:**
+```
+your-project/
+├── .roomodes              # RooRoo mode definitions
+├── .roo/                  # Custom rules and instructions
+│   └── rules/             # Agent-specific rules
+│
+└── ... (your project files)
+```
+
+#### Option 2: Global Installation
+
+Install RooRoo globally. The same configuration applies to all projects automatically.
+
+```bash
+# 1. Create global modes directory (if it doesn't exist)
+# Windows:
+mkdir -p "%APPDATA%/Code/User/globalStorage/rooveterinaryinc.roo-cline/settings"
+
+# macOS/Linux:
+mkdir -p ~/.vscode/User/globalStorage/rooveterinaryinc.roo-cline/settings
+
+# 2. Download and install global configuration
+# Windows:
+curl -o "%APPDATA%/Code/User/globalStorage/rooveterinaryinc.roo-cline/settings/cline_custom_modes.json" \
+  https://raw.githubusercontent.com/marv1nnnnn/rooroo/main/.roomodes
+
+# macOS/Linux:  
+curl -o ~/.vscode/User/globalStorage/rooveterinaryinc.roo-cline/settings/cline_custom_modes.json \
+  https://raw.githubusercontent.com/marv1nnnnn/rooroo/main/.roomodes
+
+# 3. Restart VS Code completely
+```
+
+**Note**: For global installation, rename `.roomodes` to `cline_custom_modes.json` and ensure it follows the global configuration format.
+
+### Verify Installation
+
+After installation:
+
+1. **Restart VS Code** (full restart, not just reload)
+2. **Open Roo Code panel** (click the Roo icon in the Activity Bar)
+3. **Check available modes** - you should see RooRoo agents like:
+   - 🧭 Rooroo Navigator  
+   - 🏛️ Strategic Planner
+   - 📐 Solution Architect
+   - 🧘♂️ Coder Monk
+
 ## 🚀 Quick Start & Core Workflow
 
 Using `rooroo` involves these main steps:
